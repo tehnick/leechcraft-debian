@@ -12,6 +12,12 @@ DEB_BUILDDIR = "builddir"
 DEB_SRCDIR = "src"
 DEB_DH_INSTALL_SOURCEDIR = "$(CURDIR)/debian/tmp"
 
+PACKAGE = leechcraft
+DEVELOPER = 0xd34df00d
+PROJECT = leechcraft
+
+CUR_VER = $(shell dpkg-parsechangelog | sed -ne 's/^Version: \(\([0-9]\+\):\)\?\(.*\)-.*/\3/p')
+
 CMAKEOPTS = "$(CURDIR)/$(DEB_SRCDIR)" \
 	-DTEST=False \
 	-DCMAKE_INSTALL_PREFIX=/usr \
@@ -28,7 +34,7 @@ CMAKEOPTS = "$(CURDIR)/$(DEB_SRCDIR)" \
 	-DENABLE_GLANCE=True \
 	-DENABLE_TABSLIST=True \
 	-DENABLE_FTP=False \
-	-DLEECHCRAFT_VERSION=$(shell dpkg-parsechangelog | awk '/Version:/ {print $2}' | cut -b 10-)
+	-DLEECHCRAFT_VERSION=$(CUR_VER)-stable
 
 
 configure: configure-stamp
@@ -60,6 +66,34 @@ install: build
 	dh_prep
 	dh_installdirs
 	cd $(DEB_BUILDDIR) && $(MAKE) install DESTDIR=$(DEB_DH_INSTALL_SOURCEDIR)
+get-orig-source:
+	# preparation
+	rm -rf  "$(CUR_VER)"/ "$(PACKAGE)-$(CUR_VER)"/
+	# main sources
+	wget -4 "http://nodeload.github.com/$(DEVELOPER)/$(PROJECT)/tarball/$(CUR_VER)"
+	rm -rf $(DEVELOPER)-$(PROJECT)-*
+	tar xzf "$(CUR_VER)"
+	mv $(DEVELOPER)-$(PROJECT)-* "$(PACKAGE)-$(CUR_VER)"
+	# qxmpp sources
+	wget -4 "http://nodeload.github.com/0xd34df00d/qxmpp-dev/tarball/master"
+	rm -rf 0xd34df00d-qxmpp-dev-*
+	tar xzf "master"
+	mv 0xd34df00d-qxmpp-dev-* "$(PACKAGE)-$(CUR_VER)"/qxmpp
+	# processing
+	rm -rf "$(PACKAGE)-$(CUR_VER)"/doc/
+	rm -rf "$(PACKAGE)-$(CUR_VER)"/iconsets/
+	rm -rf "$(PACKAGE)-$(CUR_VER)"/src/plugins/lcftp/
+	rm -rf "$(PACKAGE)-$(CUR_VER)"/src/plugins/cstp/resources/images/clients/*
+	mv "$(PACKAGE)-$(CUR_VER)"/src/plugins/azoth/share/azoth/iconsets/clients/default/unknown.png \
+	   "$(PACKAGE)-$(CUR_VER)"/src/plugins/azoth/share/azoth/iconsets/clients/unknown.png
+	rm -f "$(PACKAGE)-$(CUR_VER)"/src/plugins/azoth/share/azoth/iconsets/clients/default/*
+	mv "$(PACKAGE)-$(CUR_VER)"/src/plugins/azoth/share/azoth/iconsets/clients/unknown.png \
+	   "$(PACKAGE)-$(CUR_VER)"/src/plugins/azoth/share/azoth/iconsets/clients/default/unknown.png
+	rm -f "$(PACKAGE)-$(CUR_VER)"/src/util/modeltest.*
+	# tarball
+	tar -cjf "$(PACKAGE)_$(CUR_VER).orig.tar.bz2" "$(PACKAGE)-$(CUR_VER)"
+	# cleaning
+	rm -rf "$(PACKAGE)-$(CUR_VER)" "$(CUR_VER)" "master"
 binary-indep: build install
 	dh_testdir -i
 	dh_testroot -i
@@ -82,6 +116,7 @@ binary-arch: build install
 	dh_installman -a
 	dh_link -a
 	dh_strip --dbg-package=leechcraft-dbg
+	dh_lintian -a
 	dh_compress -a
 	dh_fixperms -a
 	dh_makeshlibs -plibleechcraft-xmlsettingsdialog0.3.0 \

@@ -2,8 +2,7 @@ Source: leechcraft
 Section: net
 Priority: extra
 Maintainer: Boris Pek <tehnick-8@mail.ru>
-Build-Depends:
- debhelper (>= 7.0.50~),
+Build-Depends: debhelper (>= 7),
  po-debconf,
  cmake (>= 2.8),
  kdelibs5-dev (>= 4.2.0),
@@ -25,8 +24,8 @@ Build-Depends:
  qtmobility-dev,
  zlib1g-dev
 Standards-Version: 3.9.2
-Vcs-Git: git://github.com/0xd34df00d/leechcraft.git
-Vcs-Browser: https://github.com/0xd34df00d/leechcraft
+Vcs-Git: git://github.com/tehnick/leechcraft-debian.git
+Vcs-Browser: https://github.com/tehnick/leechcraft-debian
 Homepage: http://leechcraft.org
 
 Package: leechcraft-full
@@ -77,8 +76,7 @@ Depends: ${misc:Depends},
  leechcraft-tabpp (= ${binary:Version}),
  leechcraft-vgrabber (= ${binary:Version})
 Suggests:
- leechcraft-extra,
- leechcraft-ugly
+ leechcraft-extra
 Recommends:
  libqt4-sql-psql (>= 4.6.0),
  libqt4-sql-mysql (>= 4.6.0)
