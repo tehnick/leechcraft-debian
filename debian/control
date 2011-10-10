@@ -112,25 +112,6 @@ Description: Extra LeechCraft plugins beyond full installation
  each other with no effert while staying abstract from the exact
  implementation.
 
-Package: leechcraft-incubator
-Architecture: all
-Depends: ${misc:Depends}
-Description: Plugins for LeechCraft under heavy development
- This metapackage installs additional LeechCraft plugins that are
- still under (heavy) development. Things may stop working suddenly or
- behavior may change in an uncompatible way. Nevertheless, testing is
- appreciated.
- .
- LeechCraft is a free modular "Internet client" application.
- .
- LeechCraft allows one to browse the web, read RSS/Atom feeds, download
- files via BitTorrent, HTTP, FTP and Direct Connect, automatically stream,
- download or play podcasts and other media files and much more.
- .
- Features can be easily added via plugins that can be integrated with
- each other with no effert while staying abstract from the exact
- implementation.
-
 Package: leechcraft
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
