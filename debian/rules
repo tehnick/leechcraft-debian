@@ -19,22 +19,34 @@ PROJECT = leechcraft
 CUR_VER = $(shell dpkg-parsechangelog | sed -ne 's/^Version: \(\([0-9]\+\):\)\?\(.*\)-.*/\3/p')
 
 CMAKEOPTS = "$(CURDIR)/$(DEB_SRCDIR)" \
-	-DTEST=False \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo \
-	-DDISABLE_RPATH_TRICKS=True \
+	-DLEECHCRAFT_VERSION="$(CUR_VER)-stable" \
 	-DQXMPP_LOCAL="$(CURDIR)/qxmpp" \
-	-DENABLE_POPISHU=True \
-	-DENABLE_SHELLOPEN=True \
-	-DENABLE_SECMAN=True \
-	-DENABLE_LACKMAN=True \
+	-DDISABLE_RPATH_TRICKS=True \
+	-DLOCAL_MINIUPNP=True \
+	-DTEST=False \
+	-DENABLE_ADVANCEDNOTIFICATIONS=True \
 	-DENABLE_AZOTH=True \
-	-DENABLE_GMAILNOTIFIER=True \
+	-DENABLE_QTMULTIMEDIA_KLUDGE=True \
+	-DENABLE_MEDIACALLS=False \
+	-DENABLE_AZOTH_OTROID=True \
 	-DENABLE_EISKALTDCPP=True \
 	-DENABLE_GLANCE=True \
+	-DENABLE_GMAILNOTIFIER=True \
+	-DENABLE_LACKMAN=True \
+	-DENABLE_POPISHU=True \
+	-DENABLE_SECMAN=True \
+	-DENABLE_SHELLOPEN=True \
 	-DENABLE_TABSLIST=True \
-	-DENABLE_FTP=False \
-	-DLEECHCRAFT_VERSION=$(CUR_VER)-stable
+	-DENABLE_KNOWHOW=False \
+	-DENABLE_QROSP=False \
+	-DENABLE_SYNCER=False \
+	-DENABLE_BLACKDASH=False \
+	-DENABLE_CHOROID=False \
+	-DENABLE_VFSCORE=False \
+	-DENABLE_SNAILS=False \
+	-DENABLE_FTP=False
 
 
 configure: configure-stamp
@@ -80,8 +92,6 @@ get-orig-source:
 	tar xzf "master"
 	mv 0xd34df00d-qxmpp-dev-* "$(PACKAGE)-$(CUR_VER)"/qxmpp
 	# processing
-	rm -rf "$(PACKAGE)-$(CUR_VER)"/doc/
-	rm -rf "$(PACKAGE)-$(CUR_VER)"/iconsets/
 	rm -rf "$(PACKAGE)-$(CUR_VER)"/src/plugins/lcftp/
 	rm -rf "$(PACKAGE)-$(CUR_VER)"/src/plugins/cstp/resources/images/clients/*
 	mv "$(PACKAGE)-$(CUR_VER)"/src/plugins/azoth/share/azoth/iconsets/clients/default/unknown.png \
@@ -89,7 +99,6 @@ get-orig-source:
 	rm -f "$(PACKAGE)-$(CUR_VER)"/src/plugins/azoth/share/azoth/iconsets/clients/default/*
 	mv "$(PACKAGE)-$(CUR_VER)"/src/plugins/azoth/share/azoth/iconsets/clients/unknown.png \
 	   "$(PACKAGE)-$(CUR_VER)"/src/plugins/azoth/share/azoth/iconsets/clients/default/unknown.png
-	rm -f "$(PACKAGE)-$(CUR_VER)"/src/util/modeltest.*
 	# tarball
 	tar -cjf "$(PACKAGE)_$(CUR_VER).orig.tar.bz2" "$(PACKAGE)-$(CUR_VER)"
 	# cleaning
