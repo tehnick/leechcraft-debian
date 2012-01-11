@@ -1,3 +1,9 @@
+leechcraft (0.4.98-0ppa1~precise1) precise; urgency=low
+
+  * Update to stable release 0.4.98.
+
+ -- Boris Pek <tehnick-8@mail.ru>  Wed, 11 Jan 2012 20:32:34 +0200
+
 leechcraft (0.4.97-0ppa1~precise1) precise; urgency=low
 
   * Update to stable release 0.4.97.
