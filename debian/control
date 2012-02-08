@@ -24,6 +24,7 @@ Build-Depends: debhelper (>= 7),
  libqca2-dev,
  libotr2-dev,
  libaspell-dev,
+ libspeex-dev,
  zlib1g-dev
 Homepage: http://leechcraft.org
 Vcs-Git: git://github.com/tehnick/leechcraft-debian.git
