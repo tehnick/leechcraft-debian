@@ -22,7 +22,6 @@ CMAKEOPTS = "$(CURDIR)/$(DEB_SRCDIR)" \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo \
 	-DLEECHCRAFT_VERSION="$(CUR_VER)-stable" \
-	-DQXMPP_LOCAL="$(CURDIR)/qxmpp" \
 	-DDISABLE_RPATH_TRICKS=True \
 	-DLOCAL_MINIUPNP=True \
 	-DTEST=False \
@@ -53,7 +52,6 @@ configure: configure-stamp
 configure-stamp:
 	dh_testdir
 	mkdir -p $(DEB_BUILDDIR)
-	cd $(CURDIR)/qxmpp && qmake
 	cd $(DEB_BUILDDIR) && cmake $(CMAKEOPTS)
 	touch $@
 build: configure build-arch build-indep
@@ -61,7 +59,6 @@ build-arch: build-stamp
 build-indep: build-stamp
 build-stamp:
 	dh_testdir
-	cd $(CURDIR)/qxmpp && $(MAKE) -j$(NUMJOBS)
 	cd $(DEB_BUILDDIR) && $(MAKE) -j$(NUMJOBS)
 	touch $@
 clean: do-clean
@@ -86,11 +83,6 @@ get-orig-source:
 	rm -rf $(DEVELOPER)-$(PROJECT)-*
 	tar xzf "$(CUR_VER)"
 	mv $(DEVELOPER)-$(PROJECT)-* "$(PACKAGE)-$(CUR_VER)"
-	# qxmpp sources
-	wget -4 "http://nodeload.github.com/0xd34df00d/qxmpp-dev/tarball/master"
-	rm -rf 0xd34df00d-qxmpp-dev-*
-	tar xzf "master"
-	mv 0xd34df00d-qxmpp-dev-* "$(PACKAGE)-$(CUR_VER)"/qxmpp
 	# processing
 	rm -rf "$(PACKAGE)-$(CUR_VER)"/src/plugins/lcftp/
 	rm -rf "$(PACKAGE)-$(CUR_VER)"/src/plugins/cstp/resources/images/clients/*
