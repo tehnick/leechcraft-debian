@@ -39,6 +39,7 @@ Files: src/cmake/*
  src/plugins/liznoo/cmake/*
  src/plugins/poshuku/plugins/onlinebookmarks/plugins/readitlater/cmake/*
  src/plugins/qrosp/cmake/*
+ src/plugins/azoth/plugins/astrality/cmake/*
 Copyright: 2009 Brad Hards <bradh@kde.org>
  2009 Michele Caini, <skypjack@gmail.com>
  2007 Pau Garcia i Quiles <pgquiles@elpauer.org>
@@ -58,6 +59,9 @@ Copyright: 2009 Brad Hards <bradh@kde.org>
  2006 David Faure <faure@kde.org>
  2007 Will Stephenson <wstephenson@kde.org>
  2007 Thomas Moenicke <thomas.moenicke@kdemail.net>
+ 2008 Allen Winter <winter@kde.org>
+ 2009 Andre Moreira Magalhaes <andrunko@gmail.com>
+ 2010 Casper van Donderen <casper.vandonderen@basyskom.de>
 License: BSD-3-clause
 
 Files: src/plugins/qrosp/third-party/*
@@ -147,7 +151,6 @@ Copyright: 2006-2009 Kitware, Inc.
  2007 Juha Tuomala <tuju@iki.fi>
  2007 Daniel Gollub <gollub@b1-systems.de>
  2007 Alban Browaeys <prahal@yahoo.com>
- 2006 Tristan Carel
  2006 Alexander Neundorf <neundorf@kde.org>
 License: BSD-3-clause
 
@@ -263,15 +266,8 @@ Copyright: 1991, 1993 The Regents of the University of California
  2005-2010 Thomas Bernard (http://miniupnp.free.fr/)
 License: BSD-3-clause
 
-Files: src/iconsets/oxygen/*
- src/plugins/azoth/share/azoth/iconsets/contactlist/oxygen/*
+Files: src/plugins/azoth/share/azoth/iconsets/contactlist/oxygen/*
 Copyright: 2007 Oxygen icons theme team (see http://www.oxygen-icons.org/)
- 2007 David Vignoni <david@icon-king.com>
- 2007 Johann Ollivier Lapeyre <johann@oxygen-icons.org>
- 2007 Kenneth Wimer <kwwii@bootsplash.org>
- 2007 Nuno Pinheiro <nuno@oxygen-icons.org>
- 2007 Riccardo Iaconelli <riccardo@oxygen-icons.org>
- 2007 David Miller <miller@oxygen-icons.org>
 License: LGPL-3
 
 Files: src/plugins/azoth/plugins/adiumstyles/share/azoth/styles/adium/*/Contents/Resources/*.png
