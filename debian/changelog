@@ -1,3 +1,9 @@
+leechcraft (0.5.60-0ppa1~precise1) precise; urgency=low
+
+  * Update to stable release 0.5.60.
+
+ -- Boris Pek <tehnick-8@mail.ru>  Thu, 15 Mar 2012 23:37:26 +0200
+
 leechcraft (0.5.0-0ppa2~precise1) precise; urgency=low
 
   * Some fixes in package.
