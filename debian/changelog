@@ -1,5 +1,5 @@
-leechcraft (0.5.60-0ppa1~precise1) precise; urgency=low
+leechcraft (0.5.60+dfsg-0ppa1~precise1) precise; urgency=low
 
   * Initial release.
 
- -- Boris Pek <tehnick-8@mail.ru>  Thu, 15 Mar 2012 23:37:26 +0200
+ -- Boris Pek <tehnick-8@mail.ru>  Sun, 18 Mar 2012 14:09:55 +0200
