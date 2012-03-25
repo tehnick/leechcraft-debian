@@ -1,3 +1,9 @@
+leechcraft (0.5.60+dfsg-0ppa2~precise1) precise; urgency=low
+
+  * Some fixes in package.
+
+ -- Boris Pek <tehnick-8@mail.ru>  Sun, 25 Mar 2012 19:03:18 +0300
+
 leechcraft (0.5.60+dfsg-0ppa1~precise1) precise; urgency=low
 
   * Initial release.
