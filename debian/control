@@ -1,8 +1,8 @@
 Source: leechcraft
 Section: net
-Priority: extra
+Priority: optional
 Maintainer: Boris Pek <tehnick-8@mail.ru>
-Build-Depends: debhelper (>= 7),
+Build-Depends: debhelper (>= 7.0.50~),
  po-debconf,
  cmake (>= 2.8),
  kdelibs5-dev (>= 4.2.0),
@@ -15,7 +15,7 @@ Build-Depends: debhelper (>= 7),
  libphonon-dev,
  libbz2-dev,
  libqt4-dev (>= 4.7),
- libqxmpp-dev (>= 0.3.47),
+ libqxmpp-lc-dev (>= 0.3.47),
  libqtwebkit-dev,
  libgeoip-dev,
  libtelepathy-qt4-dev,
@@ -28,7 +28,9 @@ Build-Depends: debhelper (>= 7),
  libspeex-dev,
  libqwt-dev,
  libmsn-dev,
- zlib1g-dev
+ zlib1g-dev,
+ graphviz,
+ doxygen
 Homepage: http://leechcraft.org
 Vcs-Git: git://github.com/tehnick/leechcraft-debian.git
 Vcs-Browser: https://github.com/tehnick/leechcraft-debian
@@ -91,8 +93,7 @@ Package: leechcraft-extra
 Section: metapackages
 Architecture: all
 Depends: ${misc:Depends},
- leechcraft-anhero (>= ${source:Version}),
- leechcraft-eiskaltdcpp (>= ${source:Version})
+ leechcraft-anhero (>= ${source:Version})
 Description: Extra LeechCraft plugins beyond full installation
  This metapackage installs additional LeechCraft plugins that may
  pull a lot of dependencies on some systems (like AnHero pulling
@@ -162,6 +163,7 @@ Section: devel
 Architecture: all
 Depends: ${misc:Depends},
  leechcraft (>= ${source:Version})
+Suggests: leechcraft-doc
 Description: Files required for development for LeechCraft
  This package contains header files required to develop new modules for
  LeechCraft.
@@ -178,12 +180,34 @@ Description: Files required for development for LeechCraft
 
 Package: leechcraft-dbg
 Section: debug
+Priority: extra
 Architecture: any
 Depends: ${misc:Depends},
  leechcraft (= ${binary:Version})
+Recommends: libqxmpp-lc0-dbg
 Description: Debug symbols for LeechCraft
  This package contains the debug symbols for LeechCraft and all its
  official plugins.
+ .
+ LeechCraft is a free modular "Internet client" application.
+ .
+ LeechCraft allows one to browse the web, read RSS/Atom feeds, download
+ files via BitTorrent, HTTP, FTP and Direct Connect, automatically stream,
+ download or play podcasts and other media files and much more.
+ .
+ Features can be easily added via plugins that can be integrated with
+ each other with no effert while staying abstract from the exact
+ implementation.
+
+Package: leechcraft-doc
+Section: doc
+Architecture: all
+Depends: ${misc:Depends},
+ libjs-jquery
+Recommends: leechcraft-dev
+Description: Documentation files for LeechCraft
+ This package contains documentation files which should be helpful for
+ LeechCraft developing.
  .
  LeechCraft is a free modular "Internet client" application.
  .
@@ -433,30 +457,6 @@ Depends: ${misc:Depends}, ${shlibs:Depends},
 Description: Song lyrics finder for LeechCraft
  This package contains a simple client for finding song lyrics on
  various sites.
- .
- LeechCraft is a free modular "Internet client" application.
- .
- LeechCraft allows one to browse the web, read RSS/Atom feeds, download
- files via BitTorrent, HTTP, FTP and Direct Connect, automatically stream,
- download or play podcasts and other media files and much more.
-
-Package: leechcraft-eiskaltdcpp
-Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends},
- leechcraft (= ${binary:Version})
-Suggests: php5-cli
-Recommends:
- libqtscript4-core,
- libqtscript4-gui,
- libqtscript4-network,
- libqtscript4-xml
-Description: Direct Connect client for LeechCraft
- This package contains EiskaltDC++  plugin for LeechCraft.
- .
- EiskaltDC++ is a cross-platform program that uses the Direct Connect
- and ADC protocol. It is compatible with other DC clients, such as the
- original DC from Neomodus, DC++ and derivatives. EiskaltDC++ also
- interoperates with all common DC hub software.
  .
  LeechCraft is a free modular "Internet client" application.
  .

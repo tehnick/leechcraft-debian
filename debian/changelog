@@ -1,3 +1,9 @@
+leechcraft (0.5.65+dfsg-0ppa1~precise1) precise; urgency=low
+
+  * Update to stable release 0.5.65+dfsg.
+
+ -- Boris Pek <tehnick-8@mail.ru>  Sun, 22 Apr 2012 01:27:40 +0300
+
 leechcraft (0.5.60+dfsg-0ppa2~precise1) precise; urgency=low
 
   * Some fixes in package.
