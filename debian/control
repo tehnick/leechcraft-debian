@@ -28,9 +28,8 @@ Build-Depends: debhelper (>= 7.0.50~),
  libspeex-dev,
  libqwt-dev,
  libmsn-dev,
- zlib1g-dev,
- graphviz,
- doxygen
+ zlib1g-dev
+Build-Depends-Indep: doxygen, graphviz
 Homepage: http://leechcraft.org
 Vcs-Git: git://github.com/tehnick/leechcraft-debian.git
 Vcs-Browser: https://github.com/tehnick/leechcraft-debian
