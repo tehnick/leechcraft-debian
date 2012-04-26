@@ -1,5 +1,5 @@
-leechcraft (0.5.60+dfsg-1) unstable; urgency=low
+leechcraft (0.5.65+dfsg-1) unstable; urgency=low
 
   * Initial release (closes: #607440).
 
- -- Boris Pek <tehnick-8@mail.ru>  Sat, 17 Mar 2012 21:15:02 +0200
+ -- Boris Pek <tehnick-8@mail.ru>  Thu, 26 Apr 2012 00:31:32 +0300
