@@ -28,7 +28,8 @@ Build-Depends: debhelper (>= 7.0.50~),
  libspeex-dev,
  libqwt-dev,
  libmsn-dev,
- zlib1g-dev
+ zlib1g-dev,
+ libx11-dev
 Build-Depends-Indep: doxygen, graphviz
 Homepage: http://leechcraft.org
 Vcs-Git: git://github.com/tehnick/leechcraft-debian.git
@@ -51,6 +52,7 @@ Depends: ${misc:Depends},
  leechcraft-glance (>= ${source:Version}),
  leechcraft-gmailnotifier (>= ${source:Version}),
  leechcraft-historyholder (>= ${source:Version}),
+ leechcraft-kbswitch (>= ${source:Version}),
  leechcraft-kinotify (>= ${source:Version}),
  leechcraft-lackman (>= ${source:Version}),
  leechcraft-lhtr (>= ${source:Version}),
@@ -59,6 +61,7 @@ Depends: ${misc:Depends},
  leechcraft-netstoremanager (>= ${source:Version}),
  leechcraft-networkmonitor (>= ${source:Version}),
  leechcraft-newlife (>= ${source:Version}),
+ leechcraft-otlozhu (>= ${source:Version}),
  leechcraft-pintab (>= ${source:Version}),
  leechcraft-popishu (>= ${source:Version}),
  leechcraft-poshuku (>= ${source:Version}),
@@ -69,7 +72,8 @@ Depends: ${misc:Depends},
  leechcraft-summary (>= ${source:Version}),
  leechcraft-tabsessmanager (>= ${source:Version}),
  leechcraft-tabslist (>= ${source:Version}),
- leechcraft-vgrabber (>= ${source:Version})
+ leechcraft-vgrabber (>= ${source:Version}),
+ leechcraft-xproxy (>= ${source:Version})
 Suggests:
  leechcraft-extra
 Recommends:
@@ -92,7 +96,8 @@ Package: leechcraft-extra
 Section: metapackages
 Architecture: all
 Depends: ${misc:Depends},
- leechcraft-anhero (>= ${source:Version})
+ leechcraft-anhero (>= ${source:Version}),
+ leechcraft-dolozhee (>= ${source:Version})
 Description: Extra LeechCraft plugins beyond full installation
  This metapackage installs additional LeechCraft plugins that may
  pull a lot of dependencies on some systems (like AnHero pulling
@@ -126,11 +131,13 @@ Suggests: leechcraft-advancednotifications,
  leechcraft-glance,
  leechcraft-gmailnotifier,
  leechcraft-historyholder,
+ leechcraft-kbswitch,
  leechcraft-kinotify,
  leechcraft-lmp,
  leechcraft-netstoremanager,
  leechcraft-networkmonitor,
  leechcraft-newlife,
+ leechcraft-otlozhu,
  leechcraft-pintab,
  leechcraft-popishu,
  leechcraft-poshuku,
@@ -141,7 +148,8 @@ Suggests: leechcraft-advancednotifications,
  leechcraft-summary,
  leechcraft-tabsessmanager,
  leechcraft-tabslist,
- leechcraft-vgrabber
+ leechcraft-vgrabber,
+ leechcraft-xproxy
 Description: Core executable of LeechCraft
  This package contains the main LeechCraft executable, which connects
  all the plugins with each other, routes requests between them, tracks
@@ -463,6 +471,22 @@ Description: Song lyrics finder for LeechCraft
  files via BitTorrent, HTTP, FTP and Direct Connect, automatically stream,
  download or play podcasts and other media files and much more.
 
+Package: leechcraft-dolozhee
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ leechcraft (= ${binary:Version})
+Recommends: leechcraft-provider-securestorage
+Description: Plugin for feature requests and bug reports for LeechCraft
+ This package contains Dolozhee module which simplifies making feature requests
+ and bug reports for both anonymous users and those already registered on
+ LeechCraft issue tracker.
+ .
+ LeechCraft is a free modular "Internet client" application.
+ .
+ LeechCraft allows one to browse the web, read RSS/Atom feeds, download
+ files via BitTorrent, HTTP, FTP and Direct Connect, automatically stream,
+ download or play podcasts and other media files and much more.
+
 Package: leechcraft-glance
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
@@ -502,6 +526,20 @@ Depends: ${misc:Depends}, ${shlibs:Depends},
 Description: History keeper for LeechCraft
  This package contains a history keeper that stores information about
  finished downloads and similar events.
+ .
+ LeechCraft is a free modular "Internet client" application.
+ .
+ LeechCraft allows one to browse the web, read RSS/Atom feeds, download
+ files via BitTorrent, HTTP, FTP and Direct Connect, automatically stream,
+ download or play podcasts and other media files and much more.
+
+Package: leechcraft-kbswitch
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ leechcraft (= ${binary:Version})
+Description: Keyboard plugin for LeechCraft
+ This package contains the KBSwitch plugin which allows one to have different
+ keyboard layouts for different tabs.
  .
  LeechCraft is a free modular "Internet client" application.
  .
@@ -577,10 +615,8 @@ Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
  leechcraft (= ${binary:Version})
 Provides: leechcraft-provider-mediaplayer
-Description: Media Previewer for LeechCraft
- This package contains the LMP, LeechCraft Media Previewer, small and
- dirty media player designed to preview already downloaded files or to
- stream media content live.
+Description: Music Player for LeechCraft
+ This package contains the LMP (LeechCraft  Music Player).
  .
  LeechCraft is a free modular "Internet client" application.
  .
@@ -625,6 +661,20 @@ Description: Settings importer for LeechCraft
  This package contains importer of settings, preferences etc. from
  various applications into LeechCraft. Currently it supports importing
  RSS feeds and settings from Akregator and Liferea.
+ .
+ LeechCraft is a free modular "Internet client" application.
+ .
+ LeechCraft allows one to browse the web, read RSS/Atom feeds, download
+ files via BitTorrent, HTTP, FTP and Direct Connect, automatically stream,
+ download or play podcasts and other media files and much more.
+
+Package: leechcraft-otlozhu
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ leechcraft (= ${binary:Version})
+Description: GTD-inspired TODO manager for LeechCraft
+ This package contains the Otlozhu module which implements simple but very
+ helpful TODO manager inspired by GTD (Getting Things Done) method.
  .
  LeechCraft is a free modular "Internet client" application.
  .
@@ -844,6 +894,20 @@ Provides: leechcraft-provider-search
 Description: vkontakte.ru plugin for LeechCraft
  This package contains a music search/grabber for the vkontakte.ru social
  network.
+ .
+ LeechCraft is a free modular "Internet client" application.
+ .
+ LeechCraft allows one to browse the web, read RSS/Atom feeds, download
+ files via BitTorrent, HTTP, FTP and Direct Connect, automatically stream,
+ download or play podcasts and other media files and much more.
+
+Package: leechcraft-xproxy
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ leechcraft (= ${binary:Version}),
+ leechcraft-provider-http
+Description: Advanced proxy manager for LeechCraft
+ This package contains XProxy, the advanced proxy manager for LeechCraft.
  .
  LeechCraft is a free modular "Internet client" application.
  .
