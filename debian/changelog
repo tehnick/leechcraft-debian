@@ -1,3 +1,9 @@
+leechcraft (0.5.65+dfsg-0ppa3~quantal1) quantal; urgency=low
+
+  * Some fixes in package.
+
+ -- Boris Pek <tehnick-8@mail.ru>  Fri, 04 May 2012 21:08:36 +0300
+
 leechcraft (0.5.65+dfsg-0ppa2~quantal1) quantal; urgency=low
 
   * Some fixes in package.
