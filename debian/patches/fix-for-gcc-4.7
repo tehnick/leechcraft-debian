@@ -20,3 +20,25 @@ Last-Update: 2012-04-04
  			{
  				accountData ["Port"] = tfd (acc, "port").toInt ();
  				accountData ["Host"] = tfd (acc, "use-host") == "true" ?
+--- a/src/plugins/newlife/importers/vacuum/vacuumimportpage.cpp
++++ b/src/plugins/newlife/importers/vacuum/vacuumimportpage.cpp
+@@ -41,15 +41,15 @@
+ 			QStringList (".vacuum") << "profiles",
+ 			"options.xml",
+ 			[] (const QDomElement&) { return "xmpp"; },
+-			[tfd] (const QDomElement& acc) { return tfd (acc, "name"); },
+-			[tfd] (const QDomElement& acc) { return tfd (acc, "active") == "true"; },
+-			[tfd] (const QDomElement& acc)
++			[=] (const QDomElement& acc) { return tfd (acc, "name"); },
++			[=] (const QDomElement& acc) { return tfd (acc, "active") == "true"; },
++			[=] (const QDomElement& acc)
+ 			{
+ 				const auto& sjid = tfd (acc, "streamJid");
+ 				const int pos = sjid.indexOf ('/');
+ 				return pos < 0 ? sjid : sjid.left (pos);
+ 			},
+-			[tfd] (const QDomElement& acc, QVariantMap& accountData)
++			[=] (const QDomElement& acc, QVariantMap& accountData)
+ 			{
+ 				const QDomElement& conn = acc.firstChildElement ("connection");
+ 
