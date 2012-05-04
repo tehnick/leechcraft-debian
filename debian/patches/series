@@ -1,3 +1,4 @@
+fix-for-gcc-4.7
 fix-for-lib-names
 fix-for-resources-in-cstp
 fix-problem-with-cmake-automoc
