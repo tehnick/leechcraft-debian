@@ -1,40 +1,10 @@
-leechcraft (0.5.65+dfsg-0ppa5~quantal1) quantal; urgency=low
+leechcraft (0.5.70+dfsg-0ppa1~quantal1) quantal; urgency=low
 
-  * Some fixes in package.
+  * Update to stable release 0.5.70+dfsg.
 
- -- Boris Pek <tehnick-8@mail.ru>  Sat, 05 May 2012 00:10:08 +0300
+ -- Boris Pek <tehnick-8@mail.ru>  Sun, 27 May 2012 22:23:41 +0300
 
-leechcraft (0.5.65+dfsg-0ppa4~quantal1) quantal; urgency=low
-
-  * Some fixes in package.
-
- -- Boris Pek <tehnick-8@mail.ru>  Fri, 04 May 2012 21:58:11 +0300
-
-leechcraft (0.5.65+dfsg-0ppa3~quantal1) quantal; urgency=low
-
-  * Some fixes in package.
-
- -- Boris Pek <tehnick-8@mail.ru>  Fri, 04 May 2012 21:08:36 +0300
-
-leechcraft (0.5.65+dfsg-0ppa2~quantal1) quantal; urgency=low
-
-  * Some fixes in package.
-
- -- Boris Pek <tehnick-8@mail.ru>  Thu, 03 May 2012 20:42:55 +0300
-
-leechcraft (0.5.65+dfsg-0ppa1~precise1) precise; urgency=low
-
-  * Update to stable release 0.5.65+dfsg.
-
- -- Boris Pek <tehnick-8@mail.ru>  Sun, 22 Apr 2012 01:27:40 +0300
-
-leechcraft (0.5.60+dfsg-0ppa2~precise1) precise; urgency=low
-
-  * Some fixes in package.
-
- -- Boris Pek <tehnick-8@mail.ru>  Sun, 25 Mar 2012 19:03:18 +0300
-
-leechcraft (0.5.60+dfsg-0ppa1~precise1) precise; urgency=low
+leechcraft (0.4.90+dfsg-0ppa1~precise1) precise; urgency=low
 
   * Initial release.
 
