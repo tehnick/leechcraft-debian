@@ -21,11 +21,13 @@ Build-Depends: debhelper (>= 7.0.50~),
  libtelepathy-qt4-dev,
  libcurl4-openssl-dev,
  libqscintilla2-dev,
+ libhunspell-dev,
  libqjson-dev,
  libqca2-dev,
  libotr2-dev,
  libaspell-dev,
  libspeex-dev,
+ libtag1-dev,
  libqwt-dev,
  libmsn-dev,
  zlib1g-dev,
@@ -59,6 +61,7 @@ Depends: ${misc:Depends},
  leechcraft-lhtr (>= ${source:Version}),
  leechcraft-liznoo (>= ${source:Version}),
  leechcraft-lmp (>= ${source:Version}),
+ leechcraft-nacheku (>= ${source:Version}),
  leechcraft-netstoremanager (>= ${source:Version}),
  leechcraft-networkmonitor (>= ${source:Version}),
  leechcraft-newlife (>= ${source:Version}),
@@ -134,6 +137,7 @@ Suggests: leechcraft-advancednotifications,
  leechcraft-kbswitch,
  leechcraft-kinotify,
  leechcraft-lmp,
+ leechcraft-nacheku,
  leechcraft-netstoremanager,
  leechcraft-networkmonitor,
  leechcraft-newlife,
@@ -616,6 +620,20 @@ Depends: ${misc:Depends}, ${shlibs:Depends},
 Provides: leechcraft-provider-mediaplayer
 Description: Music Player for LeechCraft
  This package contains the LMP (LeechCraft  Music Player).
+ .
+ LeechCraft is a free modular "Internet client" application.
+ .
+ LeechCraft allows one to browse the web, read RSS/Atom feeds, download
+ files via BitTorrent, HTTP, FTP and Direct Connect, automatically stream,
+ download or play podcasts and other media files and much more.
+
+Package: leechcraft-nacheku
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ leechcraft (= ${binary:Version})
+Description: Clipboard/download dir watcher for LeechCraft
+ This package contains Nacheku. This module watches clipboard and download
+ directory in order to get links and download files.
  .
  LeechCraft is a free modular "Internet client" application.
  .
