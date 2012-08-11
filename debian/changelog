@@ -1,3 +1,9 @@
+leechcraft (0.5.80+dfsg-0ppa1~quantal1) quantal; urgency=low
+
+  * Update to stable release 0.5.80+dfsg.
+
+ -- Boris Pek <tehnick-8@mail.ru>  Sat, 11 Aug 2012 18:02:47 +0300
+
 leechcraft (0.5.70+dfsg-0ppa1~quantal1) quantal; urgency=low
 
   * Update to stable release 0.5.70+dfsg.
