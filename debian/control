@@ -2,7 +2,7 @@ Source: leechcraft
 Section: net
 Priority: optional
 Maintainer: Boris Pek <tehnick-8@mail.ru>
-Build-Depends: debhelper (>= 7.0.50~),
+Build-Depends: debhelper (>= 9),
  po-debconf,
  cmake (>= 2.8),
  kdelibs5-dev (>= 4.2.0),
@@ -13,9 +13,8 @@ Build-Depends: debhelper (>= 7.0.50~),
  libboost-program-options-dev (>=1.46),
  libtorrent-rasterbar-dev (>=0.15),
  libphonon-dev,
- libbz2-dev,
  libqt4-dev (>= 4.7),
- libqxmpp-lc-dev (>= 0.3.47),
+ libqxmpp-dev (>= 0.6.3.1),
  libqtwebkit-dev,
  libgeoip-dev,
  libtelepathy-qt4-dev,
@@ -30,8 +29,10 @@ Build-Depends: debhelper (>= 7.0.50~),
  libtag1-dev,
  libqwt-dev,
  libmsn-dev,
+ libbz2-dev,
  zlib1g-dev,
  libx11-dev,
+ x11proto-randr-dev,
  graphviz,
  doxygen
 Homepage: http://leechcraft.org
@@ -618,6 +619,7 @@ Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
  leechcraft (= ${binary:Version})
 Provides: leechcraft-provider-mediaplayer
+Recommends: ffmpeg
 Description: Music Player for LeechCraft
  This package contains the LMP (LeechCraft  Music Player).
  .
@@ -760,7 +762,6 @@ Description: Web browser for LeechCraft
   local bookmarks with online social bookmarking systems like Read It Later.
   * pintab (Support of pinned tab)
   * pogooglue (Support for searching selected text in Google)
-  * wyfv (Flash video replacer)
   This is a plugin for the Poshuku web browser that replaces default flash-based
   video players on some sites with any suitable LeechCraft's media player thus
   avoiding the need for Flash. First you should install package:

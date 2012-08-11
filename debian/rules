@@ -8,11 +8,6 @@ ifeq (,$(NUMJOBS))
 	NUMJOBS = 1
 endif
 
-CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
-CFLAGS:=$(shell dpkg-buildflags --get CFLAGS) $(CPPFLAGS)
-CXXFLAGS:=$(shell dpkg-buildflags --get CXXFLAGS) $(CPPFLAGS)
-LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS) -Wl,--as-needed
-
 DEB_BUILDDIR = builddir
 DEB_SRCDIR = src
 DEB_DH_INSTALL_SOURCEDIR = $(CURDIR)/debian/tmp
@@ -31,8 +26,8 @@ CUR_VER = $(NEW_VER)\+dfsg
 CMAKEOPTS = "$(CURDIR)/$(DEB_SRCDIR)" \
 	-DCMAKE_C_FLAGS="$(CFLAGS)" \
 	-DCMAKE_CXX_FLAGS="$(CXXFLAGS)" \
-	-DCMAKE_SHARED_LINKER_FLAGS="$(LDFLAGS)" \
-	-DCMAKE_MODULE_LINKER_FLAGS="$(LDFLAGS)" \
+	-DCMAKE_SHARED_LINKER_FLAGS="$(LDFLAGS) -Wl,--as-needed" \
+	-DCMAKE_MODULE_LINKER_FLAGS="$(LDFLAGS) -Wl,--as-needed" \
 	-DCMAKE_EXE_LINKER_FLAGS="$(LDFLAGS)" \
 	-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo \
 	-DLEECHCRAFT_VERSION="$(CLN_VER)-stable" \
@@ -77,7 +72,8 @@ CMAKEOPTS = "$(CURDIR)/$(DEB_SRCDIR)" \
 	-DENABLE_VFSCORE=False \
 	-DENABLE_SNAILS=False \
 	-DENABLE_FTP=False \
-	-DENABLE_TABPP=False
+	-DENABLE_TABPP=False \
+	-DENABLE_VROOBY=False
 
 
 %:
