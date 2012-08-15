@@ -6,22 +6,25 @@ Build-Depends: debhelper (>= 9),
  po-debconf,
  cmake (>= 2.8),
  kdelibs5-dev (>= 4.2.0),
- libboost-thread-dev (>=1.46),
- libboost-date-time-dev (>=1.46),
- libboost-filesystem-dev (>=1.46),
- libboost-regex-dev (>=1.46),
- libboost-program-options-dev (>=1.46),
+ libboost-thread-dev (>=1.48),
+ libboost-date-time-dev (>=1.48),
+ libboost-filesystem-dev (>=1.48),
+ libboost-regex-dev (>=1.48),
+ libboost-program-options-dev (>=1.48),
  libtorrent-rasterbar-dev (>=0.15),
  libphonon-dev,
- libqt4-dev (>= 4.7),
+ libqt4-dev (>= 4.8),
  libqxmpp-dev (>= 0.6.3.1),
  libqtwebkit-dev,
  libgeoip-dev,
  libtelepathy-qt4-dev,
  libcurl4-openssl-dev,
  libqscintilla2-dev,
+ libpoppler-qt4-dev,
  libhunspell-dev,
+ liblastfm-dev,
  libqjson-dev,
+ libmagic-dev,
  libqca2-dev,
  libotr2-dev,
  libaspell-dev,
@@ -61,12 +64,15 @@ Depends: ${misc:Depends},
  leechcraft-lackman (>= ${source:Version}),
  leechcraft-lhtr (>= ${source:Version}),
  leechcraft-liznoo (>= ${source:Version}),
+ leechcraft-lastfmscrobble (>= ${source:Version}),
  leechcraft-lmp (>= ${source:Version}),
+ leechcraft-monocle (>= ${source:Version}),
  leechcraft-nacheku (>= ${source:Version}),
  leechcraft-netstoremanager (>= ${source:Version}),
  leechcraft-networkmonitor (>= ${source:Version}),
  leechcraft-newlife (>= ${source:Version}),
  leechcraft-pintab (>= ${source:Version}),
+ leechcraft-otlozhu (>= ${source:Version}),
  leechcraft-popishu (>= ${source:Version}),
  leechcraft-poshuku (>= ${source:Version}),
  leechcraft-secman (>= ${source:Version}),
@@ -77,8 +83,10 @@ Depends: ${misc:Depends},
  leechcraft-tabsessmanager (>= ${source:Version}),
  leechcraft-tabslist (>= ${source:Version}),
  leechcraft-vgrabber (>= ${source:Version}),
+ leechcraft-vrooby (>= ${source:Version}),
  leechcraft-xproxy (>= ${source:Version})
 Suggests:
+ leechcraft-lads (>= ${source:Version}),
  leechcraft-extra
 Recommends:
  libqt4-sql-psql (>= 4.6.0),
@@ -137,11 +145,14 @@ Suggests: leechcraft-advancednotifications,
  leechcraft-historyholder,
  leechcraft-kbswitch,
  leechcraft-kinotify,
+ leechcraft-lastfmscrobble,
  leechcraft-lmp,
+ leechcraft-monocle,
  leechcraft-nacheku,
  leechcraft-netstoremanager,
  leechcraft-networkmonitor,
  leechcraft-newlife,
+ leechcraft-otlozhu,
  leechcraft-pintab,
  leechcraft-popishu,
  leechcraft-poshuku,
@@ -153,6 +164,7 @@ Suggests: leechcraft-advancednotifications,
  leechcraft-tabsessmanager,
  leechcraft-tabslist,
  leechcraft-vgrabber,
+ leechcraft-vrooby,
  leechcraft-xproxy
 Description: Core executable of LeechCraft
  This package contains the main LeechCraft executable, which connects
@@ -408,6 +420,7 @@ Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
  leechcraft (= ${binary:Version}),
  leechcraft-provider-tasksview
+Recommends: geoip-database
 Provides: leechcraft-provider-bittorrent
 Description: BitTorrent client for LeechCraft
  This package contains a sophisticated BitTorrent client. It's based on
@@ -580,6 +593,19 @@ Description: Userspace Package Manager for LeechCraft
  files via BitTorrent, HTTP, FTP and Direct Connect, automatically stream,
  download or play podcasts and other media files and much more.
 
+Package: leechcraft-lads
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ leechcraft (= ${binary:Version})
+Description: Ubuntu Unity integration layer for LeechCraft
+ This package contains Lads, Ubuntu Unity integration layer for LeechCraft.
+ .
+ LeechCraft is a free modular "Internet client" application.
+ .
+ LeechCraft allows one to browse the web, read RSS/Atom feeds, download
+ files via BitTorrent, HTTP, FTP and Direct Connect, automatically stream,
+ download or play podcasts and other media files and much more.
+
 Package: leechcraft-lhtr
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
@@ -614,14 +640,54 @@ Description: UPower-based power manager for LeechCraft
  files via BitTorrent, HTTP, FTP and Direct Connect, automatically stream,
  download or play podcasts and other media files and much more.
 
+Package: leechcraft-lastfmscrobble
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ leechcraft (= ${binary:Version})
+Recommends: leechcraft-provider-securestorage
+Provides: leechcraft-provider-mediaartistinfo
+Description: Last.fm scrobbler for LeechCraft
+ This package contains LastFMScrobble, which provides support for various
+ Last.FM-related services from scrobbling and streaming to obtaining
+ recommendations, similar artists and biographies.
+ .
+ LeechCraft is a free modular "Internet client" application.
+ .
+ LeechCraft allows one to browse the web, read RSS/Atom feeds, download
+ files via BitTorrent, HTTP, FTP and Direct Connect, automatically stream,
+ download or play podcasts and other media files and much more.
+
 Package: leechcraft-lmp
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
  leechcraft (= ${binary:Version})
+Recommends: ffmpeg, leechcraft-lastfmscrobble,
+ leechcraft-provider-removabledevicemgr
+Suggests: leechcraft-provider-todolist
 Provides: leechcraft-provider-mediaplayer
-Recommends: ffmpeg
 Description: Music Player for LeechCraft
  This package contains the LMP (LeechCraft  Music Player).
+ .
+ LeechCraft is a free modular "Internet client" application.
+ .
+ LeechCraft allows one to browse the web, read RSS/Atom feeds, download
+ files via BitTorrent, HTTP, FTP and Direct Connect, automatically stream,
+ download or play podcasts and other media files and much more.
+
+Package: leechcraft-monocle
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ leechcraft (= ${binary:Version})
+Recommends: leechcraft-provider-sessionmanager
+Description: Document viewer for LeechCraft
+ This package contains Monocle, the modular document reader for LeechCraft.
+ Currently it has the following backend modules:
+  * fxb -- FictionBook file format (*.fb2)
+  * pdf -- PDF file format (*.pdf) (libpoppler is used)
+ .
+ Monocle supports links and tables of contents, two-page spreads, copying
+ selection as image or text, fullscreen presentation mode and has a bunch
+ of other features.
  .
  LeechCraft is a free modular "Internet client" application.
  .
@@ -680,6 +746,28 @@ Description: Settings importer for LeechCraft
  This package contains importer of settings, preferences etc. from
  various applications into LeechCraft. Currently it supports importing
  RSS feeds and settings from Akregator and Liferea.
+ .
+ LeechCraft is a free modular "Internet client" application.
+ .
+ LeechCraft allows one to browse the web, read RSS/Atom feeds, download
+ files via BitTorrent, HTTP, FTP and Direct Connect, automatically stream,
+ download or play podcasts and other media files and much more.
+
+Package: leechcraft-otlozhu
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ leechcraft (= ${binary:Version})
+Recommends: leechcraft-advancednotifications
+Provides: leechcraft-provider-todolist
+Description: (Getting Things Done style) TODO manager for LeechCraft
+ This package contains the Otlozhu module, GTD-inspired TODO manager.
+ .
+ The Getting Things Done method rests on the idea that a person needs to move
+ tasks out of the mind by recording them externally, so the mind is free from
+ the job of remembering the tasks that need to be completed. One can then 
+ concentrate on performing the tasks, instead of remembering.
+ .
+ More detail: https://en.wikipedia.org/wiki/Getting_Things_Done
  .
  LeechCraft is a free modular "Internet client" application.
  .
@@ -898,6 +986,25 @@ Provides: leechcraft-provider-search
 Description: vkontakte.ru plugin for LeechCraft
  This package contains a music search/grabber for the vkontakte.ru social
  network.
+ .
+ LeechCraft is a free modular "Internet client" application.
+ .
+ LeechCraft allows one to browse the web, read RSS/Atom feeds, download
+ files via BitTorrent, HTTP, FTP and Direct Connect, automatically stream,
+ download or play podcasts and other media files and much more.
+
+Package: leechcraft-vrooby
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ leechcraft (= ${binary:Version}),
+ leechcraft-sidebar,
+ udisks (>= 1.0)
+Provides: leechcraft-provider-removabledevicemgr
+Description: removable storage devices manager for LeechCraft
+ This package contains Vrooby, the removable storage device manager for
+ LeechCraft. This module allows other plugins to enumerate and work with
+ removable devices (like LMP device syncer), as well at allows the user
+ to mount and unmount devices easily.
  .
  LeechCraft is a free modular "Internet client" application.
  .
