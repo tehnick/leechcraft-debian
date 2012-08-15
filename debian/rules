@@ -24,11 +24,11 @@ NEW_VER = $(shell uscan --dehs | sed -n 's/.*<upstream-version>\(.*\)<\/upstream
 CUR_VER = $(NEW_VER)\+dfsg
 
 CMAKEOPTS = "$(CURDIR)/$(DEB_SRCDIR)" \
-	-DCMAKE_C_FLAGS="$(CFLAGS)" \
-	-DCMAKE_CXX_FLAGS="$(CXXFLAGS)" \
+	-DCMAKE_C_FLAGS="$(CFLAGS) $(CPPFLAGS)" \
+	-DCMAKE_CXX_FLAGS="$(CXXFLAGS) $(CPPFLAGS)" \
 	-DCMAKE_SHARED_LINKER_FLAGS="$(LDFLAGS) -Wl,--as-needed" \
 	-DCMAKE_MODULE_LINKER_FLAGS="$(LDFLAGS) -Wl,--as-needed" \
-	-DCMAKE_EXE_LINKER_FLAGS="$(LDFLAGS)" \
+	-DCMAKE_EXE_LINKER_FLAGS="$(LDFLAGS) -Wl,--as-needed" \
 	-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo \
 	-DLEECHCRAFT_VERSION="$(CLN_VER)-stable" \
 	-DCMAKE_INSTALL_PREFIX=/usr \
