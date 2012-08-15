@@ -1,3 +1,13 @@
+leechcraft (0.5.80+dfsg-0ppa2~quantal1) quantal; urgency=low
+
+  * Deleted file patches/fix-problem-with-cmake-automoc
+  * Added packages: leechcraft-monocle, leechcraft-lastfmscrobble,
+    leechcraft-otlozhu, leechcraft-vrooby, leechcraft-lads.
+  * geoip-database was added to recommends of leechcraft-bittorrent
+  * Bumped build dependencies because of this new plugins.
+
+ -- Boris Pek <tehnick-8@mail.ru>  Wed, 15 Aug 2012 21:58:06 +0300
+
 leechcraft (0.5.80+dfsg-0ppa1~quantal1) quantal; urgency=low
 
   * Update to stable release 0.5.80+dfsg.
