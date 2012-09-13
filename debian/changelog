@@ -1,3 +1,16 @@
+leechcraft (0.5.80+dfsg-0ppa3~quantal1) quantal; urgency=low
+
+  * Package leechcraft was renamed to leechcraft-core.
+  * Package leechcraft-full was renamed to leechcraft.
+  * Added subplugin "seen" in package leechcraft-monocle.
+  * Added new packages: leechcraft-gacts, leechcraft-knowhow.
+  * Updated packages: leechcraft-aggregator, leechcraft-lastfmscrobble,
+    leechcraft-lmp, leechcraft-netstoremanager, leechcraft-otlozhu,
+    leechcraft-pintab, leechcraft-summary, leechcraft-tabsessmanager,
+    leechcraft-dev, leechcraft-kinotify, leechcraft-lackman.
+
+ -- Boris Pek <tehnick-8@mail.ru>  Thu, 13 Sep 2012 23:33:41 +0300
+
 leechcraft (0.5.80+dfsg-0ppa2~quantal1) quantal; urgency=low
 
   * Deleted file patches/fix-problem-with-cmake-automoc
