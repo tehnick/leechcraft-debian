@@ -1,3 +1,9 @@
+leechcraft (0.5.80+dfsg-0ppa4~quantal1) quantal; urgency=low
+
+  * Deleted package leechcraft-gacts.
+
+ -- Boris Pek <tehnick-8@mail.ru>  Tue, 25 Sep 2012 01:24:06 +0300
+
 leechcraft (0.5.80+dfsg-0ppa3~quantal1) quantal; urgency=low
 
   * Package leechcraft was renamed to leechcraft-core.
