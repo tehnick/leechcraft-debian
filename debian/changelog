@@ -1,3 +1,9 @@
+leechcraft (0.5.80+dfsg-0ppa5~quantal1) quantal; urgency=low
+
+  * Provide smooth update.
+
+ -- Boris Pek <tehnick-8@mail.ru>  Sat, 29 Sep 2012 12:14:38 +0300
+
 leechcraft (0.5.80+dfsg-0ppa4~quantal1) quantal; urgency=low
 
   * Deleted package leechcraft-gacts.
