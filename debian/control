@@ -93,8 +93,9 @@ Suggests:
 Recommends:
  libqt4-sql-psql (>= 4.6.0),
  libqt4-sql-mysql (>= 4.6.0)
-Replaces: leechcraft-full (>> 0.5.80+dfsg-0ppa2)
-Breaks: leechcraft-full (<< 0.5.80+dfsg-0ppa2)
+Conflicts: leechcraft-full
+Replaces: leechcraft-full
+Provides: leechcraft-full
 Description: Full LeechCraft installation
  This metapackage installs all main LeechCraft plugins.
  .
@@ -172,7 +173,6 @@ Suggests: leechcraft-advancednotifications,
  leechcraft-vgrabber,
  leechcraft-vrooby,
  leechcraft-xproxy
-Replaces: leechcraft (>> 0.5.80+dfsg-0ppa2)
 Breaks: leechcraft (<< 0.5.80+dfsg-0ppa2)
 Description: Core executable of LeechCraft
  This package contains the main LeechCraft executable, which connects
