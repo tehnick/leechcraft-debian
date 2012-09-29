@@ -69,7 +69,7 @@ CMAKEOPTS = "$(CURDIR)/src" \
 
 
 %:
-	dh $@ --parallel
+	dh $@ --parallel --buildsystem=cmake
 
 override_dh_auto_configure:
 	mkdir -p $(DEB_BUILDDIR)
