@@ -1,3 +1,14 @@
+leechcraft (0.5.85+dfsg-0ppa1~quantal1) quantal; urgency=low
+
+  * Update to stable release 0.5.85.
+  * Added new packages: leechcraft-gacts, leechcraft-hotstreams.
+  * Update build dep from libqxmpp-dev (now version >= 0.7.4 is required),
+    add build dep on libpcre3-dev and libqxt-dev.
+  * Updated debian/patches/fix-for-lib-names
+  * Update debian/copyright.
+
+ -- Boris Pek <tehnick-8@mail.ru>  Thu, 04 Oct 2012 23:16:56 +0300
+
 leechcraft (0.5.80+dfsg-0ppa6~quantal1) quantal; urgency=low
 
   * Simplify debian/rules.
