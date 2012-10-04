@@ -68,9 +68,9 @@ Depends: ${misc:Depends},
  leechcraft-kinotify (>= ${source:Version}),
  leechcraft-knowhow (>= ${source:Version}),
  leechcraft-lackman (>= ${source:Version}),
+ leechcraft-lastfmscrobble (>= ${source:Version}),
  leechcraft-lhtr (>= ${source:Version}),
  leechcraft-liznoo (>= ${source:Version}),
- leechcraft-lastfmscrobble (>= ${source:Version}),
  leechcraft-lmp (>= ${source:Version}),
  leechcraft-monocle (>= ${source:Version}),
  leechcraft-nacheku (>= ${source:Version}),
@@ -665,6 +665,23 @@ Description: Ubuntu Unity integration layer for LeechCraft
  files via BitTorrent, HTTP, FTP and Direct Connect, automatically stream,
  download or play podcasts and other media files and much more.
 
+Package: leechcraft-lastfmscrobble
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ leechcraft-core (= ${binary:Version})
+Recommends: leechcraft-provider-securestorage
+Provides: leechcraft-provider-mediaartistinfo
+Description: Last.fm scrobbler for LeechCraft
+ This package contains LastFMScrobble, which provides support for various
+ Last.FM-related services from scrobbling and streaming to obtaining
+ recommendations, similar artists and biographies.
+ .
+ LeechCraft is a free modular "Internet client" application.
+ .
+ LeechCraft allows one to browse the web, read RSS/Atom feeds, download
+ files via BitTorrent, HTTP, FTP and Direct Connect, automatically stream,
+ download or play podcasts and other media files and much more.
+
 Package: leechcraft-lhtr
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
@@ -692,23 +709,6 @@ Description: UPower-based power manager for LeechCraft
  suspend/resume events and allows other plugins to respond correspondingly.
  For example Azoth gracefully disconnects from the servers after receiving
  suspend notification, and reconnects back after resume.
- .
- LeechCraft is a free modular "Internet client" application.
- .
- LeechCraft allows one to browse the web, read RSS/Atom feeds, download
- files via BitTorrent, HTTP, FTP and Direct Connect, automatically stream,
- download or play podcasts and other media files and much more.
-
-Package: leechcraft-lastfmscrobble
-Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends},
- leechcraft-core (= ${binary:Version})
-Recommends: leechcraft-provider-securestorage
-Provides: leechcraft-provider-mediaartistinfo
-Description: Last.fm scrobbler for LeechCraft
- This package contains LastFMScrobble, which provides support for various
- Last.FM-related services from scrobbling and streaming to obtaining
- recommendations, similar artists and biographies.
  .
  LeechCraft is a free modular "Internet client" application.
  .
