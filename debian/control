@@ -416,7 +416,7 @@ Description: Modular IM client for LeechCraft
   * vader (Support for the MRIM protocol)
   * xoox (XMPP/Jabber support)
     This package contains the XMPP protocol plugin for Azoth, based on the
-    patched QXmpp library.
+    QXmpp library.
   * xtazy (Plugin for publishing current tune)
     This plugin allows one to publish current user tune. MPRIS-compatible
     players and standard files are supported as sources of information
