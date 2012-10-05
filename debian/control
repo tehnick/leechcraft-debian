@@ -38,9 +38,8 @@ Build-Depends: debhelper (>= 9),
  libbz2-dev,
  zlib1g-dev,
  libx11-dev,
- x11proto-randr-dev,
- graphviz,
- doxygen
+ x11proto-randr-dev
+Build-Depends-Indep: doxygen, graphviz
 Homepage: http://leechcraft.org
 Vcs-Git: git://github.com/tehnick/leechcraft-debian.git
 Vcs-Browser: https://github.com/tehnick/leechcraft-debian
