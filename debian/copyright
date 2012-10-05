@@ -27,6 +27,8 @@ Copyright: 2006-2012 Georg Rudoy <0xd34df00d@gmail.com>
  2010 Vadim Misbakh-Soloviev
  2011 Eugene Mamin
  2012 Dimitriy Ryazantcev
+ 2012 Maxim Ignatenko
+ 2012 Maxim Koltsov
 License: GPL-3+
 
 Files: src/cmake/*
@@ -43,6 +45,8 @@ Files: src/cmake/*
  src/plugins/qrosp/cmake/*
  src/plugins/azoth/plugins/astrality/cmake/*
  src/plugins/monocle/plugins/pdf/cmake/*
+ src/plugins/hotstreams/cmake/*
+ src/plugins/poshuku/plugins/cleanweb/cmake/*
 Copyright: 2009 Brad Hards <bradh@kde.org>
  2009 Michele Caini, <skypjack@gmail.com>
  2007 Pau Garcia i Quiles <pgquiles@elpauer.org>
@@ -67,6 +71,7 @@ Copyright: 2009 Brad Hards <bradh@kde.org>
  2010 Casper van Donderen <casper.vandonderen@basyskom.de>
  2006 Laurent Montel <montel@kde.org>
  2006 Wilfried Huss <wilfried.huss@gmx.at>
+ 2006 Alexander Neundorf <neundorf@kde.org>
 License: BSD-3-clause
 
 Files: src/plugins/qrosp/third-party/*
@@ -95,27 +100,6 @@ License: GPL-3 or LGPL-2.1
  Other Usage
  Alternatively, these files may be used in accordance with the terms and
  conditions contained in a signed written agreement between you and Nokia.
-
-Files: src/3dparty/*
-Copyright: 2010 Qxt Foundation <foundation@libqxt.org> (http://libqxt.org)
-License: LGPL-2.1 or CPL-1
- This library is free software; you can redistribute it and/or modify it
- under the terms of the Common Public License, version 1.0, as published
- by IBM, and/or under the terms of the GNU Lesser General Public License,
- version 2.1, as published by the Free Software Foundation.
- .
- This file is provided "AS IS", without WARRANTIES OR CONDITIONS OF ANY
- KIND, EITHER EXPRESS OR IMPLIED INCLUDING, WITHOUT LIMITATION, ANY
- WARRANTIES OR CONDITIONS OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY OR
- FITNESS FOR A PARTICULAR PURPOSE.
- .
- You should have received a copy of the CPL and the LGPL along with this
- file. See the LICENSE file and the cpl1.0.txt/lgpl-2.1.txt files
- included with the source distribution for more information.
- If you did not receive a copy of the licenses, contact the Qxt Foundation.
- .
- On Debian systems, the complete text of the GNU Lesser General
- Public License can be found in `/usr/share/common-licenses/LGPL-2.1'.
 
 Files: src/plugins/azoth/plugins/autoidler/3dparty/*
 Copyright: 2003 Justin Karneges
@@ -283,11 +267,6 @@ License: GPL-2+
 Files: src/plugins/azoth/plugins/modnok/lc_azoth_modnok_latexconvert.sh
 Copyright: 2004 Andreas Reigber <anderl@nought.de>
 License: GPL-3+
-
-Files: qxmpp/*
-Copyright: 2008-2011 The QXmpp developers (http://code.google.com/p/qxmpp)
- 2008-2011 Georg Rudoy <0xd34df00d@gmail.com>
-License: LGPL-2.1+
 
 Files: debian/*
 Copyright: 2011-2012 Boris Pek <tehnick-8@mail.ru>
