@@ -221,7 +221,7 @@ Priority: extra
 Architecture: any
 Depends: ${misc:Depends},
  leechcraft-core (= ${binary:Version})
-Recommends: libqxmpp-lc0-dbg
+Recommends: libqxmpp0-dbg
 Description: Debug symbols for LeechCraft
  This package contains the debug symbols for LeechCraft and all its
  official plugins.
