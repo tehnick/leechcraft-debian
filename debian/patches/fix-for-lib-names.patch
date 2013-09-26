@@ -43,7 +43,8 @@ Last-Update: 2013-09-26
 -TARGET_LINK_LIBRARIES (lcutil
 +TARGET_LINK_LIBRARIES (leechcraft-util
  	${QT_LIBRARIES}
- 	xmlsettingsdialog
+-	xmlsettingsdialog
++	leechcraft-xmlsettingsdialog
  	)
 -SET_PROPERTY (TARGET lcutil PROPERTY SOVERSION 0.5.0)
 -INSTALL (TARGETS lcutil DESTINATION ${LIBDIR})
