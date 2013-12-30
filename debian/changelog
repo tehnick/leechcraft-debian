@@ -1,3 +1,9 @@
+leechcraft (0.6.60+dfsg-0ppa1~trusty1) trusty; urgency=medium
+
+  * Update to stable release 0.6.60.
+
+ -- Boris Pek <tehnick@debian.org>  Mon, 30 Dec 2013 20:01:08 +0400
+
 leechcraft (0.5.90+dfsg-0ppa1~raring1) raring; urgency=low
 
   * Update to stable release 0.5.90.
