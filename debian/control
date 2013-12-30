@@ -1,4 +1,4 @@
-Source: leechcraft-unstable
+Source: leechcraft
 Section: net
 Priority: optional
 Maintainer: Boris Pek <tehnick@debian.org>
@@ -51,8 +51,8 @@ Build-Depends:
  x11proto-randr-dev,
  zlib1g-dev
 Homepage: http://leechcraft.org
-Vcs-Git: git://github.com/tehnick/leechcraft-unstable-debian.git
-Vcs-Browser: https://github.com/tehnick/leechcraft-unstable-debian
+Vcs-Git: git://github.com/tehnick/leechcraft-debian.git
+Vcs-Browser: https://github.com/tehnick/leechcraft-debian
 Standards-Version: 3.9.5
 
 Package: leechcraft
