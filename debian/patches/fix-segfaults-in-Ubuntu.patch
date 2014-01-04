@@ -1,0 +1,23 @@
+Description: fix segfaults in SB2 plugin
+ This bug affects only Ubuntu.
+Origin: https://github.com/0xd34df00d/leechcraft/commit/2110f0c
+Applied-Upstream: 0.6.65
+Last-Update: 2014-01-05
+
++++ b/src/plugins/sb2/launchercomponent.cpp
+@@ -344,12 +344,13 @@
+ 		CurrentTabList_ = view;
+ 	}
+ 
+-	void LauncherComponent::tabListUnhovered (const QByteArray&)
++	void LauncherComponent::tabListUnhovered (const QByteArray& tc)
+ 	{
+ 		if (!CurrentTabList_)
+ 			return;
+ 
+-		CurrentTabList_->HandleLauncherUnhovered ();
++		if (tc == CurrentTabList_->GetTabClass ())
++			CurrentTabList_->HandleLauncherUnhovered ();
+ 	}
+ 
+ 	void LauncherComponent::handleNewTab (const QString&, QWidget *w)
