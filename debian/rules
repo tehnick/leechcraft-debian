@@ -4,17 +4,16 @@ PACKAGE = leechcraft
 
 DEBIAN_PATH := $(abspath $(dir $(MAKEFILE_LIST)))
 USCAN_REPORT = $(shell uscan --noconf --report --dehs $(DEBIAN_PATH))
-NEW_VER = $(shell echo "$(USCAN_REPORT)" | sed -n 's/.*<upstream-version>\(.*\)<\/upstream-version>.*/\1/p')
 CUR_URL = $(shell echo "$(USCAN_REPORT)" | sed -n 's/.*<upstream-url>\(.*\)<\/upstream-url>.*/\1/p')
+NEW_VER = $(shell echo "$(USCAN_REPORT)" | sed -n 's/.*<upstream-version>\(.*\)<\/upstream-version>.*/\1/p')
 CUR_VER = $(NEW_VER)+dfsg
 
-DEB_VER = $(shell dpkg-parsechangelog -l$(DEBIAN_PATH)/changelog | sed -ne 's/^Version: \(\([0-9]\+\):\)\?\(.*\)-.*/\3/p')
+DEB_VER = $(shell dpkg-parsechangelog -l"$(DEBIAN_PATH)/changelog" | sed -ne 's/^Version: \(\([0-9]\+\):\)\?\(.*\)-.*/\3/p')
 CLN_VER = $(shell echo $(DEB_VER) | sed 's/\+dfsg//')
 
-DEB_BUILDDIR = obj-$(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 DEB_DOCDIR = $(CURDIR)/debian/tmp/usr/share/doc/leechcraft-doc
 
-LDFLAGS+=-Wl,--as-needed
+LDFLAGS += -Wl,--as-needed
 
 CMAKEOPTS = "$(CURDIR)/src" \
 	-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo \
@@ -39,7 +38,9 @@ CMAKEOPTS = "$(CURDIR)/src" \
 	-DENABLE_BLASQ_SPEGNERSI=False \
 	-DENABLE_BLOGIQUE=True \
 	-DENABLE_CEMENTO=False \
+	-DENABLE_CERTMGR=False \
 	-DENABLE_CHOROID=False \
+	-DENABLE_CPULOAD=True \
 	-DENABLE_DBUSMANAGER=True \
 	-DENABLE_DEADLYRICS=True \
 	-DENABLE_DEVMON=True \
@@ -53,7 +54,7 @@ CMAKEOPTS = "$(CURDIR)/src" \
 	-DENABLE_GMAILNOTIFIER=True \
 	-DENABLE_HARBINGER=False \
 	-DENABLE_HISTORYHOLDER=True \
-	-DENABLE_HOTSENSORS=False \
+	-DENABLE_HOTSENSORS=True \
 	-DENABLE_HOTSTREAMS=True \
 	-DENABLE_HTTP=True \
 	-DENABLE_HTTHARE=False \
@@ -66,7 +67,7 @@ CMAKEOPTS = "$(CURDIR)/src" \
 	-DENABLE_LADS=True \
 	-DENABLE_LASTFMSCROBBLE=True \
 	-DENABLE_LAUGHTY=False \
-	-DENABLE_LAUNCHY=False \
+	-DENABLE_LAUNCHY=True \
 	-DENABLE_LEMON=False \
 	-DENABLE_LHTR=True \
 	-DENABLE_LIZNOO=True \
@@ -80,6 +81,7 @@ CMAKEOPTS = "$(CURDIR)/src" \
 	-DENABLE_NETSTOREMANAGER=True \
 	-DENABLE_NETWORKMONITOR=True \
 	-DENABLE_NEWLIFE=True \
+	-DENABLE_OORONEE=True \
 	-DENABLE_OTLOZHU=True \
 	-DENABLE_OTLOZHU_SYNC=False \
 	-DENABLE_OTZERKALU=False \
@@ -88,9 +90,10 @@ CMAKEOPTS = "$(CURDIR)/src" \
 	-DENABLE_POLEEMERY=False \
 	-DENABLE_POPISHU=True \
 	-DENABLE_POSHUKU=True \
-	-DENABLE_POSHUKU_AUTOSEARCH=False \
 	-DENABLE_QROSP=False \
+	-DENABLE_ROSENTHAL=True \
 	-DENABLE_SB2=True \
+	-DENABLE_SCROBLIBRE=True \
 	-DENABLE_SECMAN=True \
 	-DENABLE_SEEKTHRU=True \
 	-DENABLE_SHAITAN=False \
@@ -98,44 +101,48 @@ CMAKEOPTS = "$(CURDIR)/src" \
 	-DENABLE_SNAILS=False \
 	-DENABLE_SUMMARY=True \
 	-DENABLE_SYNCER=False \
-	-DENABLE_SYSNOTIFY=False \
+	-DENABLE_SYSNOTIFY=True \
 	-DENABLE_TABSESSMANAGER=True \
 	-DENABLE_TABSLIST=True \
+	-DENABLE_TEXTOGROOSE=False \
 	-DENABLE_TORRENT=True \
-	-DENABLE_TOUCHSTREAMS=False \
+	-DENABLE_TOUCHSTREAMS=True \
 	-DENABLE_TPI=True \
 	-DENABLE_TWIFEE=False \
 	-DENABLE_VGRABBER=True \
 	-DENABLE_VROOBY=True \
 	-DENABLE_VTYULC=False \
 	-DENABLE_XPROXY=True \
-	-DENABLE_XTAZY=False \
+	-DENABLE_XTAZY=True \
 	\
 	-DENABLE_MEDIACALLS=False \
 	-DWITH_GACTS_BUNDLED_QXT=False
 
 
 %:
-	dh $@ --parallel --buildsystem=cmake
+	dh $@ --parallel --list-missing --buildsystem=cmake
 
-override_dh_auto_configure:
-	mkdir -p $(DEB_BUILDDIR)
-	cd $(DEB_BUILDDIR) && cmake $(CMAKEOPTS)
+override_dh_auto_configure-arch:
+	dh_auto_configure -- $(CMAKEOPTS)
+
+override_dh_auto_configure-indep:
 	cd $(CURDIR)/doc/doxygen/azoth/   && cp Doxyfile Doxyfile.orig
 	cd $(CURDIR)/doc/doxygen/core/    && cp Doxyfile Doxyfile.orig
 	cd $(CURDIR)/doc/doxygen/monocle/ && cp Doxyfile Doxyfile.orig
 	sed -i $(CURDIR)/doc/doxygen/*/Doxyfile \
 		-e "s/PROJECT_NUMBER         = .*/PROJECT_NUMBER         = $(CLN_VER)/"
 
-override_dh_auto_build:
-	dh_auto_build --buildsystem=cmake
+override_dh_auto_build-indep:
 	cd $(CURDIR)/doc/doxygen/azoth/   && doxygen Doxyfile
 	cd $(CURDIR)/doc/doxygen/core/    && doxygen Doxyfile
 	cd $(CURDIR)/doc/doxygen/monocle/ && doxygen Doxyfile
 
-override_dh_auto_clean:
-	dh_testroot
+override_dh_auto_clean-arch:
+	dh_auto_clean -a
 	rm -f src/data/leechcraft.1.gz
+
+override_dh_auto_clean-indep:
+	dh_auto_clean -i
 	rm -fr $(CURDIR)/doc/doxygen/*/out
 	[ ! -f $(CURDIR)/doc/doxygen/azoth/Doxyfile.orig ] || \
 		( cd $(CURDIR)/doc/doxygen/azoth/ && mv -f Doxyfile.orig Doxyfile )
@@ -143,10 +150,12 @@ override_dh_auto_clean:
 		( cd $(CURDIR)/doc/doxygen/core/  && mv -f Doxyfile.orig Doxyfile )
 	[ ! -f $(CURDIR)/doc/doxygen/monocle/Doxyfile.orig ] || \
 		( cd $(CURDIR)/doc/doxygen/monocle/  && mv -f Doxyfile.orig Doxyfile )
-	dh_auto_clean
 
-override_dh_auto_install:
-	dh_auto_install
+override_dh_auto_install-arch:
+	dh_auto_install -a
+	rm -rf $(CURDIR)/debian/tmp/usr/include/leechcraft/util/cmake/
+
+override_dh_auto_install-indep:
 	mkdir -p $(DEB_DOCDIR)/html/azoth
 	mkdir -p $(DEB_DOCDIR)/html/core
 	mkdir -p $(DEB_DOCDIR)/html/monocle
@@ -154,19 +163,15 @@ override_dh_auto_install:
 	cp -r $(CURDIR)/doc/doxygen/core/out/html/*    $(DEB_DOCDIR)/html/core/
 	cp -r $(CURDIR)/doc/doxygen/monocle/out/html/* $(DEB_DOCDIR)/html/monocle/
 
-override_dh_installchangelogs:
-	dh_installchangelogs CHANGELOG
+.PHONY: override_dh_auto_test-indep
 
-.PHONY: override_dh_strip
 override_dh_strip:
 	dh_strip --dbg-package=leechcraft-dbg
 
-.PHONY: override_dh_makeshlibs
 override_dh_makeshlibs:
 	dh_makeshlibs -V -plibleechcraft-xsd0.3.0 \
 					 -plibleechcraft-util0.5.0
 
-.PHONY: override_dh_shlibdeps
 override_dh_shlibdeps:
 	dh_shlibdeps -a -ldebian/libleechcraft-xsd0.3.0/usr/lib \
 					-ldebian/libleechcraft-util0.5.0/usr/lib
@@ -175,13 +180,12 @@ override_dh_builddeb:
 	dh_builddeb -- -Zxz
 
 get-orig-source:
-	# preparation
-	rm -rf "$(PACKAGE)-$(NEW_VER)" "$(PACKAGE)-$(CUR_VER)"
 	# getting sources
-	wget -c "$(CUR_URL)" -O "$(PACKAGE)_$(NEW_VER).orig.tar.gz"
-	tar xzf "$(PACKAGE)_$(NEW_VER).orig.tar.gz"
+	wget -c "$(CUR_URL)" -O "$(PACKAGE)-$(NEW_VER).tar.gz"
+	rm -rf "$(PACKAGE)-$(NEW_VER)"
+	tar xzf "$(PACKAGE)-$(NEW_VER).tar.gz"
 	mv "$(PACKAGE)-$(NEW_VER)" "$(PACKAGE)-$(CUR_VER)"
-	# deleting some files and directories
+	# processing
 	rm -r "$(PACKAGE)-$(CUR_VER)"/src/plugins/cstp/resources/images/clients/*
 	rm -r "$(PACKAGE)-$(CUR_VER)"/src/plugins/advancednotifications/share/sounds/*
 	mv "$(PACKAGE)-$(CUR_VER)"/src/plugins/azoth/share/azoth/iconsets/clients/default/unknown.png \
@@ -192,4 +196,5 @@ get-orig-source:
 	# tarball
 	tar -cJf "$(PACKAGE)_$(CUR_VER).orig.tar.xz" "$(PACKAGE)-$(CUR_VER)"
 	# cleaning
-	rm -rf "$(PACKAGE)-$(NEW_VER)" "$(PACKAGE)-$(CUR_VER)" "$(PACKAGE)_$(NEW_VER).orig.tar.gz"
+	rm -rf "$(PACKAGE)-$(CUR_VER)" "$(PACKAGE)-$(NEW_VER).tar.gz"
+
