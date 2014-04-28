@@ -1,3 +1,14 @@
+leechcraft (0.6.65+dfsg-0ppa2~utopic1) utopic; urgency=medium
+
+  * Delete build dependency from libcurl4-openssl-dev.
+  * Add build dependencies from libgstreamer1.0-dev and
+    libgstreamer-plugins-base1.0-dev.
+  * Add dirty hack for Ubuntu >= 14.04 LTS (Trusty Tahr).
+  * Update debian/rules.
+  * Update package leechcraft-dev.
+
+ -- Boris Pek <tehnick@debian.org>  Tue, 29 Apr 2014 00:08:06 +0400
+
 leechcraft (0.6.65+dfsg-0ppa1~trusty1) trusty; urgency=medium
 
   * Update to stable release 0.6.65.
